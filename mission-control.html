@@ -9,7 +9,7 @@
     .wrap{max-width:1100px;margin:0 auto;padding:32px}
     h1{margin:0 0 16px;font-size:2rem}
     h2{margin:16px 0 10px;font-size:1.1rem;color:#a8b3cf}
-    .tabs{display:flex;gap:10px;margin:12px 0 18px}
+    .tabs{display:flex;gap:10px;margin:12px 0 18px;flex-wrap:wrap}
     .tab{padding:8px 12px;border:1px solid #1f2a44;border-radius:10px;background:#121827;cursor:pointer}
     .tab.active{background:#1a2440;border-color:#2a3a60}
     .panel{display:none}
@@ -22,6 +22,7 @@
     .small{opacity:.8;font-size:.9rem}
     .activity{padding:10px 12px;border-bottom:1px solid #1f2a44}
     .ts{opacity:.7;font-size:.9rem}
+    ul{margin:8px 0 0 18px}
   </style>
 </head>
 <body>
@@ -32,6 +33,10 @@
       <div class="tab" data-tab="activities">Activities</div>
       <div class="tab" data-tab="kpis">KPIs</div>
       <div class="tab" data-tab="decisions">Decisions</div>
+      <div class="tab" data-tab="mission">Mission</div>
+      <div class="tab" data-tab="goals">Goals</div>
+      <div class="tab" data-tab="tasks">Tasks</div>
+      <div class="tab" data-tab="strategies">Strategies</div>
     </div>
 
     <div id="panel-overview" class="panel active">
@@ -90,6 +95,48 @@
         <ul>
           <li>Confirm first experiment focus (or delegate)</li>
           <li>Preferred intake channel for future public pages</li>
+        </ul>
+      </div>
+    </div>
+
+    <div id="panel-mission" class="panel">
+      <div class="card">
+        <h2>Mission</h2>
+        <p>Build an AI-native company that reaches $100,000/month revenue within six months, leveraging automation and internet-scale delivery. Prioritize systems that expand economic opportunity, aligned with Africa-focused technological infrastructure.</p>
+      </div>
+    </div>
+
+    <div id="panel-goals" class="panel">
+      <div class="card">
+        <h2>Goals</h2>
+        <ul>
+          <li>G0 (Week 1): Stand up internal control surface; pick and launch 1st revenue experiment</li>
+          <li>G1 (30 days): First $5–10k MRR via pilots</li>
+          <li>G2 (90 days): $30–50k MRR; narrow to 1–2 proven offers</li>
+          <li>G3 (180 days): $100k MRR; harden ops and scale</li>
+        </ul>
+      </div>
+    </div>
+
+    <div id="panel-tasks" class="panel">
+      <div class="card">
+        <h2>Tasks (Active)</h2>
+        <ul id="tasks-list">
+          <li>Populate Activities daily and after major changes</li>
+          <li>Draft first experiment brief (scope, demo, pricing)</li>
+          <li>Wire KPIs (source-of-truth JSON + render)</li>
+        </ul>
+      </div>
+    </div>
+
+    <div id="panel-strategies" class="panel">
+      <div class="card">
+        <h2>Strategies</h2>
+        <ul>
+          <li>Bias for services → quick wins, then templatize into product</li>
+          <li>Automation-first: email/PR/meeting digests; reduce decision latency</li>
+          <li>Operate with measurable weekly KPIs; pivot fast on weak signals</li>
+          <li>Leverage existing networks (dev/Web3/infra) for early pilots</li>
         </ul>
       </div>
     </div>
