@@ -1,5 +1,10 @@
 [
   {
+    "ts": "2026-03-12T09:55:58Z",
+    "title": "Enabled Activities tab + alerts",
+    "detail": "Added Activities to Mission Control and will ping Mikael on each new entry."
+  },
+  {
     "ts": "2026-03-12T09:50:00Z",
     "title": "Published internal Mission Control page",
     "detail": "Added mission-control.html and /mc/ as internal status surface."
