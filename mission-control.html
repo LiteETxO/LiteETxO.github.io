@@ -37,6 +37,7 @@
       <div class="tab" data-tab="goals">Goals</div>
       <div class="tab" data-tab="tasks">Tasks</div>
       <div class="tab" data-tab="strategies">Strategies</div>
+    <div class="tab" data-tab="timeline">Timeline</div>
     </div>
 
     <div id="panel-overview" class="panel active">
@@ -130,6 +131,13 @@
       </div>
     </div>
 
+    <div id="panel-timeline" class="panel">
+      <div class="card">
+        <h2>Timeline</h2>
+        <div id="timeline"></div>
+        <div class="small">Source: data/timeline.json</div>
+      </div>
+    </div>
     <div id="panel-strategies" class="panel">
       <div class="card">
         <h2>Strategies</h2>
@@ -163,6 +171,18 @@
       }catch(e){console.error(e)}
     }
     loadActivities();
+    loadTimeline();
+  
+    async function loadTimeline(){
+      try{
+        const res = await fetch('data/timeline.json', {cache:'no-store'});
+        if(!res.ok) return;
+        const items = await res.json();
+        const root = document.getElementById('timeline');
+        const rows = items.map(it=>`<div class="activity"><div><strong>${it.title}</strong></div><div class="ts">${it.date}</div><div>${it.detail||''}</div></div>`).join('');
+        root.innerHTML = rows;
+      }catch(e){console.error(e)}
+    }
   </script>
 </body>
 </html>
