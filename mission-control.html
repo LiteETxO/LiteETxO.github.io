@@ -6,83 +6,115 @@
   <title>Mission Control — Internal</title>
   <style>
     html,body{height:100%;margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Helvetica,Arial,sans-serif;background:#0b0f1a;color:#e6e8ee}
-    .wrap{max-width:1000px;margin:0 auto;padding:32px}
+    .wrap{max-width:1100px;margin:0 auto;padding:32px}
     h1{margin:0 0 16px;font-size:2rem}
-    h2{margin:24px 0 10px;font-size:1.2rem;color:#a8b3cf}
+    h2{margin:16px 0 10px;font-size:1.1rem;color:#a8b3cf}
+    .tabs{display:flex;gap:10px;margin:12px 0 18px}
+    .tab{padding:8px 12px;border:1px solid #1f2a44;border-radius:10px;background:#121827;cursor:pointer}
+    .tab.active{background:#1a2440;border-color:#2a3a60}
+    .panel{display:none}
+    .panel.active{display:block}
     .card{background:#121827;border:1px solid #1f2a44;border-radius:12px;padding:16px;margin:10px 0}
     .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:12px}
     .kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
     .kpi{background:#0f1625;border:1px solid #1f2a44;border-radius:10px;padding:12px;text-align:center}
     .kpi .n{font-size:1.6rem}
-    code,pre{background:#0f1625;border:1px solid #1f2a44;padding:10px;border-radius:8px;display:block;overflow:auto}
-    a{color:#93c5fd}
     .small{opacity:.8;font-size:.9rem}
+    .activity{padding:10px 12px;border-bottom:1px solid #1f2a44}
+    .ts{opacity:.7;font-size:.9rem}
   </style>
 </head>
 <body>
   <div class="wrap">
     <h1>Mission Control — Internal</h1>
-    <div class="card">
-      <h2>CEO Update (Today)</h2>
-      <div class="grid">
-        <div class="card">
-          <strong>Plan</strong>
-          <ul>
-            <li>Stand up internal status surface</li>
-            <li>Ship public scaffold (root site) for future use</li>
-          </ul>
-        </div>
-        <div class="card">
-          <strong>Actual</strong>
-          <ul>
-            <li>Root site live at <a href="/">LiteETxO.github.io</a></li>
-            <li>Internal Mission Control page (this) published</li>
-          </ul>
-        </div>
-        <div class="card">
-          <strong>Next Focus (24–72h)</strong>
-          <ul>
-            <li>Decide and launch first revenue experiment (pending Chairman choice or default to Ops Automation)</li>
-            <li>Add daily activity log + heartbeat summaries here</li>
-          </ul>
+    <div class="tabs">
+      <div class="tab active" data-tab="overview">Overview</div>
+      <div class="tab" data-tab="activities">Activities</div>
+      <div class="tab" data-tab="kpis">KPIs</div>
+      <div class="tab" data-tab="decisions">Decisions</div>
+    </div>
+
+    <div id="panel-overview" class="panel active">
+      <div class="card">
+        <h2>CEO Update (Today)</h2>
+        <div class="grid">
+          <div class="card">
+            <strong>Plan</strong>
+            <ul>
+              <li>Stand up internal status surface</li>
+              <li>Prepare first revenue experiment plan</li>
+            </ul>
+          </div>
+          <div class="card">
+            <strong>Actual</strong>
+            <ul>
+              <li>Root site live at LiteETxO.github.io</li>
+              <li>Internal Mission Control published</li>
+            </ul>
+          </div>
+          <div class="card">
+            <strong>Next (24–72h)</strong>
+            <ul>
+              <li>Decide and launch first experiment</li>
+              <li>Add daily activity + heartbeat summaries</li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>
 
-    <div class="card">
-      <h2>Activity Log</h2>
-      <ul>
-        <li>[Now] Published internal Mission Control page</li>
-        <li>[Today] Root GitHub Pages set up</li>
-      </ul>
-    </div>
-
-    <div class="card">
-      <h2>KPIs (Week 0)</h2>
-      <div class="kpis">
-        <div class="kpi"><div class="n">0</div><div>Leads</div></div>
-        <div class="kpi"><div class="n">0</div><div>Booked Calls</div></div>
-        <div class="kpi"><div class="n">0</div><div>Pilots</div></div>
-        <div class="kpi"><div class="n">$0</div><div>MRR</div></div>
+    <div id="panel-activities" class="panel">
+      <div class="card">
+        <h2>Activities</h2>
+        <div id="activities"></div>
+        <div class="small">Auto-updated by committing to data/activities.json</div>
       </div>
-      <div class="small">KPIs begin tracking once the first experiment is greenlit.</div>
     </div>
 
-    <div class="card">
-      <h2>Decisions / Requests</h2>
-      <ul>
-        <li>Confirm first experiment focus (or delegate selection to CEO)</li>
-        <li>Preferred lead intake channel for future public-facing pages (Calendly/email/Telegram)</li>
-      </ul>
+    <div id="panel-kpis" class="panel">
+      <div class="card">
+        <h2>KPIs (Week 0)</h2>
+        <div class="kpis">
+          <div class="kpi"><div class="n">0</div><div>Leads</div></div>
+          <div class="kpi"><div class="n">0</div><div>Booked Calls</div></div>
+          <div class="kpi"><div class="n">0</div><div>Pilots</div></div>
+          <div class="kpi"><div class="n">$0</div><div>MRR</div></div>
+        </div>
+        <div class="small">KPIs begin once the first experiment is live.</div>
+      </div>
     </div>
 
-    <div class="card">
-      <h2>Links</h2>
-      <ul>
-        <li>Root site: <a href="https://LiteETxO.github.io/">LiteETxO.github.io</a></li>
-        <li>GitHub (root pages): <a href="https://github.com/LiteETxO/LiteETxO.github.io">LiteETxO/LiteETxO.github.io</a></li>
-      </ul>
+    <div id="panel-decisions" class="panel">
+      <div class="card">
+        <h2>Decisions / Requests</h2>
+        <ul>
+          <li>Confirm first experiment focus (or delegate)</li>
+          <li>Preferred intake channel for future public pages</li>
+        </ul>
+      </div>
     </div>
   </div>
+
+  <script>
+    const tabs = document.querySelectorAll('.tab');
+    const show = id => {
+      document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
+      document.getElementById('panel-'+id).classList.add('active');
+      tabs.forEach(t=>t.classList.remove('active'));
+      document.querySelector(`.tab[data-tab="${id}"]`).classList.add('active');
+    };
+    tabs.forEach(t=>t.addEventListener('click',()=>show(t.dataset.tab)));
+
+    async function loadActivities(){
+      try{
+        const res = await fetch('data/activities.json', {cache:'no-store'});
+        if(!res.ok) return;
+        const items = await res.json();
+        const root = document.getElementById('activities');
+        root.innerHTML = items.map(it=>`<div class="activity"><div><strong>${it.title}</strong></div><div class="ts">${new Date(it.ts).toLocaleString()}</div><div>${it.detail||''}</div></div>`).join('');
+      }catch(e){console.error(e)}
+    }
+    loadActivities();
+  </script>
 </body>
 </html>
