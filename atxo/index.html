@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <!-- v2026-03-14-1 -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ATXO — More Qualified Demos for Seed–A SaaS</title>
+  <meta name="description" content="We add 3–5 qualified meetings/month for Seed–A SaaS by fixing inputs: better lists + tailored copy + fast iteration." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <!-- Sticky, simplified top nav for faster scanning -->
+  <header class="nav">
+    <div class="container">
+      <a class="brand" href="#top"><img class="logo" src="./assets/logo.svg" alt="ATXO" height="24"/></a>
+      <nav class="nav-links">
+        <a href="#how">How it works</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#about">Why us</a>
+        <a class="cta" href="#book">Book a call</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- Clear hero with single CTA -->
+    <section class="hero">
+      <div class="container hero-wrap">
+        <h1>More qualified demos for Seed–A SaaS — without adding headcount</h1>
+        <p class="sub">Add 3–5 qualified meetings/month by fixing inputs: better lists + tailored copy + fast iteration.</p>
+        <div class="actions">
+          <a class="btn btn-primary" href="#book">Request a 10‑minute look</a>
+          <a class="btn btn-ghost" href="#how">See how it works</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Quick, scannable steps -->
+    <section id="how" class="how">
+      <div class="container grid-3">
+        <div class="card step">
+          <div class="step-num">1</div>
+          <h3>Better lists</h3>
+          <p>Firmographics + tech + hiring signals to match your ICP precisely.</p>
+        </div>
+        <div class="card step">
+          <div class="step-num">2</div>
+          <h3>Tailored copy</h3>
+          <p>Messaging that sounds like you, tested weekly for lift.</p>
+        </div>
+        <div class="card step">
+          <div class="step-num">3</div>
+          <h3>Fast loops</h3>
+          <p>Short cycles to double‑down on what gets replies and demos.</p>
+        </div>
+      </div>
+      <div class="container align-center mt-16">
+        <a class="btn btn-primary" href="#pricing">View pricing</a>
+      </div>
+    </section>
+
+    <!-- Pricing with prominent CTA -->
+    <section id="pricing" class="pricing">
+      <div class="container">
+        <h2>Pricing</h2>
+        <div class="tiers">
+          <div class="tier card">
+            <h3>Starter Audit</h3>
+            <p class="price">$0</p>
+            <ul class="bullets">
+              <li>ICP review + 10 sample leads</li>
+              <li>1 draft angle (no sending)</li>
+              <li>Fast async review</li>
+            </ul>
+            <a class="btn btn-primary" href="#book">Get free audit</a>
+          </div>
+          <div class="tier card featured">
+            <h3>Pilot</h3>
+            <p class="price">$299/mo</p>
+            <ul class="bullets">
+              <li>50 leads/month (ICP‑matched)</li>
+              <li>3‑step sequence + weekly tweaks</li>
+              <li>Cancel anytime</li>
+            </ul>
+            <a class="btn btn-primary" href="#book">Start pilot</a>
+          </div>
+          <div class="tier card">
+            <h3>Growth</h3>
+            <p class="price">$499–$699/mo</p>
+            <ul class="bullets">
+              <li>100–150 leads/month</li>
+              <li>More variants + light multi‑channel</li>
+              <li>Prioritized tweaks</li>
+            </ul>
+            <a class="btn btn-ghost" href="#book">Talk options</a>
+          </div>
+        </div>
+        <div class="fineprint mt-12">Free audit requires work email; limited to one per company.</div>
+      </div>
+    </section>
+
+    <!-- Why us with compact copy -->
+    <section id="about" class="about">
+      <div class="container narrow">
+        <h2>Why ATXO</h2>
+        <p>We focus on the two inputs that move the needle for early‑stage SaaS: list quality and sharp copy. Simple, measurable, and fast to start.</p>
+      </div>
+    </section>
+
+    <!-- Booking section with clear CTA -->
+    <section id="book" class="book">
+      <div class="container narrow">
+        <h2>Request a 10‑minute look</h2>
+        <p>Share your details and ICP. We’ll send a 1‑pager and two angles we’d test first. Live calls are enabled once sender/booking is verified.</p>
+        <div class="request">
+          <form id="reqForm" onsubmit="sendMailto(event)">
+            <div class="grid-2">
+              <input type="text" name="name" placeholder="Your name" required />
+              <input type="email" name="email" placeholder="Work email" required />
+            </div>
+            <textarea name="notes" rows="4" placeholder="Your ICP + quick context (optional)"></textarea>
+            <button class="btn btn-primary" type="submit">Send request</button>
+          </form>
+        </div>
+        <div class="fineprint align-center mt-12">Live booking is coming soon. For now, your request opens an email draft to confirm details.</div>
+      </div>
+    </section>
+
+    <!-- Back to top quick link -->
+    <div class="container align-center mt-24">
+      <a class="top-link" href="#top">Back to top ↑</a>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div>© <span id="year"></span> ATXO</div>
+      <div class="fineprint">Pilot first. Cancel anytime.</div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    function sendMailto(e){
+      e.preventDefault();
+      const f = document.getElementById('reqForm');
+      const name = encodeURIComponent(f.name.value.trim());
+      const email = encodeURIComponent(f.email.value.trim());
+      const notes = encodeURIComponent(f.notes.value.trim());
+      const to = 'selam@send.atxo.me'; // will be active once mailbox is ready
+      const subject = encodeURIComponent('ATXO — 10‑min outline request');
+      const body = encodeURIComponent(`Name: ${decodeURIComponent(name)}\nEmail: ${decodeURIComponent(email)}\nNotes: ${decodeURIComponent(notes)}`);
+      window.location.href = `mailto:${to}?subject=${subject}&body=${body}`;
+    }
+  </script>
+</body>
+</html>
