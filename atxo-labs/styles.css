@@ -32,9 +32,10 @@
 
 /* Pricing */
 .pricing{padding:48px 0;border-top:1px solid var(--border)}
-.price-card{display:flex;align-items:center;justify-content:space-between;background:var(--card);border:1px solid var(--border);border-radius:12px;padding:16px;gap:16px}
-.price-copy{max-width:520px}
-.price{font-size:28px;margin:.25rem 0}
+.tiers{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.tier .price{font-size:28px;margin:.25rem 0}
+.tier.featured{border-color:var(--accent)}
+@media (max-width:1000px){.tiers{grid-template-columns:1fr}}
 
 /* About/Book */
 .about,.book{padding:48px 0}
