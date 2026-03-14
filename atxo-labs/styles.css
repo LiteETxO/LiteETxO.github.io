@@ -39,6 +39,11 @@
 .about,.book{padding:48px 0}
 .narrow{max-width:760px}
 .top-link{color:var(--muted);text-decoration:none}
+.request form{display:grid;gap:12px;margin-top:12px}
+.request .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.request input,.request textarea{background:var(--card);color:var(--fg);border:1px solid var(--border);border-radius:10px;padding:10px}
+.request button{justify-self:start}
+@media (max-width:700px){.request .grid-2{grid-template-columns:1fr}}
 
 /* Footer */
 .footer{padding:24px 0;border-top:1px solid var(--border);color:var(--muted)}

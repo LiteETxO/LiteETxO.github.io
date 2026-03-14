@@ -93,11 +93,17 @@
       <div class="container narrow">
         <h2>Request a 10‑minute look</h2>
         <p>Share your details and ICP. We’ll send a 1‑pager and two angles we’d test first. Live calls are enabled once sender/booking is verified.</p>
-        <div class="calendly">
-          <!-- Replace with real link when ready -->
-          <a class="btn btn-ghost" href="#" aria-disabled="true">Live booking coming soon</a>
+        <div class="request">
+          <form id="reqForm" onsubmit="sendMailto(event)">
+            <div class="grid-2">
+              <input type="text" name="name" placeholder="Your name" required />
+              <input type="email" name="email" placeholder="Work email" required />
+            </div>
+            <textarea name="notes" rows="4" placeholder="Your ICP + quick context (optional)"></textarea>
+            <button class="btn btn-primary" type="submit">Send request</button>
+          </form>
         </div>
-        <div class="fineprint align-center mt-12">Prefer email? Reply to the intro and we’ll send the 1‑pager.</div>
+        <div class="fineprint align-center mt-12">Live booking is coming soon. For now, your request opens an email draft to confirm details.</div>
       </div>
     </section>
 
@@ -116,6 +122,17 @@
 
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
+    function sendMailto(e){
+      e.preventDefault();
+      const f = document.getElementById('reqForm');
+      const name = encodeURIComponent(f.name.value.trim());
+      const email = encodeURIComponent(f.email.value.trim());
+      const notes = encodeURIComponent(f.notes.value.trim());
+      const to = 'selam@send.atxo.me'; // will be active once mailbox is ready
+      const subject = encodeURIComponent('ATXO — 10‑min outline request');
+      const body = encodeURIComponent(`Name: ${decodeURIComponent(name)}\nEmail: ${decodeURIComponent(email)}\nNotes: ${decodeURIComponent(notes)}`);
+      window.location.href = `mailto:${to}?subject=${subject}&body=${body}`;
+    }
   </script>
 </body>
 </html>
